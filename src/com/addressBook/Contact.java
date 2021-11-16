@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Contact {
+
 	Scanner sc = new Scanner(System.in);
-	ArrayList<PersonInformation> contactList = new ArrayList<PersonInformation>();
+	ArrayList<PersonInformation> Contactlist = new ArrayList<PersonInformation>();
 	PersonInformation personInfo = new PersonInformation(null, null, null, null, null, null, null, null);
 
 	// add contact method
 	public void addContact() {
-		createContact();
+		System.out.println("Enter Number of contacts to be added");
+		int n = sc.nextInt();
+		for (int i = 0; i < n; i++) {
+			createContact();
+		}
 	}
 
 	// edit contact method
@@ -19,8 +24,8 @@ public class Contact {
 		String editName = sc.next();
 		boolean flag = false;
 
-		for (int i = 0; i < contactList.size(); i++) {
-			String name = contactList.get(i).getFirstName();
+		for (int i = 0; i < Contactlist.size(); i++) {
+			String name = Contactlist.get(i).getFirstName();
 			if (name.equals(editName)) {
 				createContact();
 				flag = true;
@@ -39,11 +44,11 @@ public class Contact {
 		boolean flag = false;
 
 		// take list name one by one
-		for (int i = 0; i < contactList.size(); i++) {
-			String name = contactList.get(i).getFirstName();
+		for (int i = 0; i < Contactlist.size(); i++) {
+			String name = Contactlist.get(i).getFirstName();
 			if (name.equals(deleteName)) {
 				flag = true;
-				contactList.remove(i);
+				Contactlist.remove(i);
 				printContact();
 				break;
 			}
@@ -53,8 +58,22 @@ public class Contact {
 		}
 	}
 
+	// display contacts
+	public void displayContact() {
+		int i = 1;
+		if (Contactlist.size() != 0) {
+			for (PersonInformation contactlist : Contactlist) {
+				System.out.println(i + " " + contactlist);
+				i++;
+			}
+		} else {
+			System.out.println("No data to display");
+		}
+	}
+
 	// creating contact
 	public void createContact() {
+
 		System.out.println("Enter First Name : ");
 		String firstName = sc.next();
 
@@ -81,7 +100,7 @@ public class Contact {
 
 		personInfo = new PersonInformation(firstName, lastName, address, city, state, zip, phoneNumber, email);
 
-		contactList.add(personInfo);
+		Contactlist.add(personInfo);
 		printContact();
 	}
 
@@ -89,12 +108,10 @@ public class Contact {
 	public void printContact() {
 		System.out.println("Contact Details");
 		System.out.println("Name 	      : " + personInfo.getLastName() + " " + personInfo.getLastName() + "\n"
-						 + "Address       : " + personInfo.getAddress() + "\n" 
-						 + "City          : " + personInfo.getCity() + "\n"
-						 + "State         : " + personInfo.getState() + "\n" 
-						 + "Zip           : " + personInfo.getZip() + "\n"
-						 + "MobileNumber  : " + personInfo.getPhoneNumber() + "\n" 
-						 + "EmailId       : " + personInfo.getEmail()+ "\n");
+				+ "Address       : " + personInfo.getAddress() + "\n" + "City          : " + personInfo.getCity() + "\n"
+				+ "State         : " + personInfo.getState() + "\n" + "Zip           : " + personInfo.getZip() + "\n"
+				+ "MobileNumber  : " + personInfo.getPhoneNumber() + "\n" + "EmailId       : " + personInfo.getEmail()
+				+ "\n");
 	}
 
 }
