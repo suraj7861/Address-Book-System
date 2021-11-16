@@ -6,35 +6,45 @@ public class AddressBook {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program");
-		Scanner sc = new Scanner(System.in);
-		Contact contact = new Contact();
-		boolean flag = true;
+		AddressBook addressBook = new AddressBook();
+		
+		MultipleAddressBook multiAddressBook = new MultipleAddressBook();
+		boolean flag = true;	
 		while (flag) {
-			System.out.println("Enter \n 1. add The contact \n 2. edit the contact \n "
-					         + "3. delete the contact \n 4. display contacts \n 0. To exit");
-			int choice = sc.nextInt();
+			System.out.println("Enter \n 1. Add new AddressBook\n 2. Add contact in AddressBook\n " +
+					"3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n " +
+					"6. Print the AddressBook\n 7. Print the contacts in AddressBook\n 0. Exit Applcation");
+			Scanner scanner = new Scanner(System.in);
+			int choice = scanner.nextInt();
 			switch (choice) {
 			case 1:
-				contact.addContact();
+				multiAddressBook.addAddressBook();
 				break;
 			case 2:
-				contact.editContact();
+				multiAddressBook.addContact();
 				break;
 			case 3:
-				contact.deleteContact();
+				multiAddressBook.editContactInBook();
 				break;
 			case 4:
-				contact.displayContact();
+				multiAddressBook.deleteContactInBook();
+				break;
+			case 5:
+				multiAddressBook.deleteAddressBook();
+				break;
+			case 6:
+				multiAddressBook.printBook();
+				break;
+			case 7:
+				multiAddressBook.printContactsInBook();
 				break;
 			case 0:
-				System.out.println("Exit");
+				System.out.println("Exit Application");
 				flag = false;
 				break;
 			default:
-				System.out.println("Invalid input");
-				continue;
+				System.out.println("Enter the wrong input");
 			}
 		}
 	}
-
 }
