@@ -7,13 +7,15 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class MultipleAddressBook {
+	Scanner scanner = new Scanner(System.in);
+
+	Contact contact = new Contact();
 	PersonInformation person = new PersonInformation();
-	List<PersonInformation> contactList = new ArrayList<>();
+	List<PersonInformation> contactList = new ArrayList<PersonInformation>();
 	HashMap<String, Contact> contactService = new HashMap<>();
 
 	public void addAddressBook() {
 		System.out.println("Enter Name of new Address Book: ");
-		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
 		if (contactService.containsKey(bookName)) {
 			System.out.println("Address book with this name exists, Enter new name.");
@@ -31,7 +33,6 @@ public class MultipleAddressBook {
 
 	public void addContact() {
 		System.out.println("Enter the name of Address book to add the contact.");
-		Scanner scanner = new Scanner(System.in);
 		String newContact = scanner.nextLine();
 		Contact addressBook = contactService.get(newContact);
 		if (addressBook == null) {
@@ -44,7 +45,6 @@ public class MultipleAddressBook {
 
 	public void editContactInBook() {
 		System.out.println("Enter Name to Edit Address Book: ");
-		Scanner scanner = new Scanner(System.in);
 		String editBookName = scanner.next();
 		if (contactService.containsKey(editBookName)) {
 			contactService.get(editBookName).editContact();
@@ -56,7 +56,6 @@ public class MultipleAddressBook {
 
 	public void deleteAddressBook() {
 		System.out.println("Enter Name to Delete Address Book: ");
-		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
 		if (contactService.containsKey(bookName)) {
 			contactService.remove(bookName);
@@ -68,7 +67,6 @@ public class MultipleAddressBook {
 
 	public void deleteContactInBook() {
 		System.out.println("Enter Name to delete the contacts from Address Book : ");
-		Scanner scanner = new Scanner(System.in);
 		String bookName = scanner.next();
 		if (contactService.containsKey(bookName)) {
 			contactService.get(bookName).deleteContact();

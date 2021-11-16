@@ -6,12 +6,11 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Contact {
-
+	Scanner scanner = new Scanner(System.in);
 	PersonInformation person = new PersonInformation();
 	List<PersonInformation> contactList = new ArrayList<>();
 
 	public void addContact() {
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the number of contacts you want to enter");
 		int number = scanner.nextInt();
 
@@ -21,21 +20,20 @@ public class Contact {
 		}
 	}
 
-	//creating contact
+	// creating contact
 	public void createContact() {
 		boolean found = false;
 
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter First Name : ");
 		String firstName = scanner.next();
 
-		//checked duplicate name in the address book
+		// checked duplicate name in the address book
 		for (int j = 0; j < contactList.size(); j++) {
 
 			List<String> names = contactList.stream().map(PersonInformation::getFirstName).collect(Collectors.toList());
 
-			for ( int k = 0; k < names.size(); k++)  {
-				if(names.get(j).equals(firstName)) {
+			for (int k = 0; k < names.size(); k++) {
+				if (names.get(j).equals(firstName)) {
 					found = true;
 					break;
 				}
@@ -43,8 +41,7 @@ public class Contact {
 		}
 		if (found == true) {
 			System.out.println("Person Name is already in the address book!");
-		}
-		else {
+		} else {
 			System.out.println("Enter Last Name : ");
 			String lastName = scanner.next();
 			System.out.println("Enter Address : ");
@@ -61,17 +58,17 @@ public class Contact {
 			String emailId = scanner.next();
 			person = new PersonInformation(firstName, lastName, address, city, state, zipCode, mobileNumber, emailId);
 			contactList.add(person);
+			System.out.println(contactList);
 		}
 	}
 
-	//edit contact in the address book
+	// edit contact in the address book
 	public void editContact() {
 		System.out.println("Enter the first name of person to edit contact");
-		Scanner scanner = new Scanner(System.in);
 		String editName = scanner.next();
 		boolean edited = false;
 
-		//check the person information using first name
+		// check the person information using first name
 		for (int i = 0; i < contactList.size(); i++) {
 			String name = contactList.get(i).getFirstName();
 			if (name.equalsIgnoreCase(editName)) {
@@ -86,14 +83,13 @@ public class Contact {
 		}
 	}
 
-	//delete contact details from address book
+	// delete contact details from address book
 	public void deleteContact() {
 		System.out.println("Enter the first name of person to delete contact");
-		Scanner scanner = new Scanner(System.in);
 		String deleteName = scanner.next();
 		int i = 0;
 
-		for ( ;i < contactList.size(); i++) {
+		for (; i < contactList.size(); i++) {
 			String name = contactList.get(i).getFirstName();
 			if (name.equalsIgnoreCase(deleteName)) {
 				break;
@@ -102,8 +98,32 @@ public class Contact {
 		if (i < contactList.size()) {
 			contactList.remove(i);
 			System.out.println("Contact Deleted");
-		}else {
+		} else {
 			System.out.println("Contact not find");
+		}
+	}
+
+	// search by city name
+	public void searchByCity() {
+		System.out.println("Enter city: ");
+		String city = scanner.next();
+		List<PersonInformation> collectList = contactList.stream()
+				.filter(contactInfo -> contactInfo.getCity().equals(city)).collect(Collectors.toList());
+		System.out.println(collectList);
+		for (PersonInformation contact : collectList) {
+			System.out.println("Search result: " + contact);
+		}
+
+	}
+
+	// search by state name
+	public void searchByState() {
+		System.out.println("Enter State: ");
+		String state = scanner.next();
+		List<PersonInformation> searchData = contactList.stream()
+				.filter(contactInfo -> contactInfo.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
+		for (PersonInformation contact : searchData) {
+			System.out.println("Search result: " + contact);
 		}
 	}
 }
