@@ -10,7 +10,8 @@ public class AddressBook {
 		Contact contact = new Contact();
 		boolean flag = true;
 		while (flag) {
-			System.out.println("Enter \n 1. add The contact \n  2. edit the contact \n 0. To exit");
+			System.out.println("Enter \n 1. add The contact \n  2. edit the contact \n "
+					         + "3. delete the contact \n 0. To exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -18,6 +19,9 @@ public class AddressBook {
 				break;
 			case 2:
 				contact.editContact();
+				break;
+			case 3:
+				contact.deleteContact();
 				break;
 			case 0:
 				System.out.println("Exit");

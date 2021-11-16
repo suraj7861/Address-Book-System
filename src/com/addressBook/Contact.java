@@ -5,22 +5,22 @@ import java.util.Scanner;
 
 public class Contact {
 	Scanner sc = new Scanner(System.in);
-	ArrayList<PersonInformation> Contactlist = new ArrayList<PersonInformation>();
+	ArrayList<PersonInformation> contactList = new ArrayList<PersonInformation>();
 	PersonInformation personInfo = new PersonInformation(null, null, null, null, null, null, null, null);
 
-	//add contact method
+	// add contact method
 	public void addContact() {
 		createContact();
 	}
 
-	//edit contact method
+	// edit contact method
 	public void editContact() {
 		System.out.println("Enter the first name of person to edit contact");
 		String editName = sc.next();
 		boolean flag = false;
-		
-		for (int i = 0; i < Contactlist.size(); i++) {
-			String name = Contactlist.get(i).getFirstName();
+
+		for (int i = 0; i < contactList.size(); i++) {
+			String name = contactList.get(i).getFirstName();
 			if (name.equals(editName)) {
 				createContact();
 				flag = true;
@@ -31,8 +31,29 @@ public class Contact {
 			System.out.println("Invalid input");
 		}
 	}
-	
-	//creating contact
+
+	// delete contact method
+	public void deleteContact() {
+		System.out.println("Enter the first name of person to edit contact");
+		String deleteName = sc.next();
+		boolean flag = false;
+
+		// take list name one by one
+		for (int i = 0; i < contactList.size(); i++) {
+			String name = contactList.get(i).getFirstName();
+			if (name.equals(deleteName)) {
+				flag = true;
+				contactList.remove(i);
+				printContact();
+				break;
+			}
+		}
+		if (!flag) {
+			System.out.println("Name does not exit");
+		}
+	}
+
+	// creating contact
 	public void createContact() {
 		System.out.println("Enter First Name : ");
 		String firstName = sc.next();
@@ -60,17 +81,20 @@ public class Contact {
 
 		personInfo = new PersonInformation(firstName, lastName, address, city, state, zip, phoneNumber, email);
 
-		Contactlist.add(personInfo);
+		contactList.add(personInfo);
 		printContact();
 	}
+
 	// print contact details
 	public void printContact() {
 		System.out.println("Contact Details");
 		System.out.println("Name 	      : " + personInfo.getLastName() + " " + personInfo.getLastName() + "\n"
-				+ "Address       : " + personInfo.getAddress() + "\n" + "City          : " + personInfo.getCity() + "\n"
-				+ "State         : " + personInfo.getState() + "\n" + "Zip           : " + personInfo.getZip() + "\n"
-				+ "MobileNumber  : " + personInfo.getPhoneNumber() + "\n" + "EmailId       : " + personInfo.getEmail()
-				+ "\n");
+						 + "Address       : " + personInfo.getAddress() + "\n" 
+						 + "City          : " + personInfo.getCity() + "\n"
+						 + "State         : " + personInfo.getState() + "\n" 
+						 + "Zip           : " + personInfo.getZip() + "\n"
+						 + "MobileNumber  : " + personInfo.getPhoneNumber() + "\n" 
+						 + "EmailId       : " + personInfo.getEmail()+ "\n");
 	}
 
 }
