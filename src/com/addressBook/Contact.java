@@ -8,14 +8,32 @@ public class Contact {
 	ArrayList<PersonInformation> Contactlist = new ArrayList<PersonInformation>();
 	PersonInformation personInfo = new PersonInformation(null, null, null, null, null, null, null, null);
 
-	// add contact method
+	//add contact method
 	public void addContact() {
 		createContact();
 	}
 
-	// creating contact
+	//edit contact method
+	public void editContact() {
+		System.out.println("Enter the first name of person to edit contact");
+		String editName = sc.next();
+		boolean flag = false;
+		
+		for (int i = 0; i < Contactlist.size(); i++) {
+			String name = Contactlist.get(i).getFirstName();
+			if (name.equals(editName)) {
+				createContact();
+				flag = true;
+				break;
+			}
+		}
+		if (!flag) {
+			System.out.println("Invalid input");
+		}
+	}
+	
+	//creating contact
 	public void createContact() {
-
 		System.out.println("Enter First Name : ");
 		String firstName = sc.next();
 
@@ -45,7 +63,6 @@ public class Contact {
 		Contactlist.add(personInfo);
 		printContact();
 	}
-
 	// print contact details
 	public void printContact() {
 		System.out.println("Contact Details");
