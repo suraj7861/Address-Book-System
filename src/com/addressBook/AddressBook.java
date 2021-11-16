@@ -7,13 +7,13 @@ public class AddressBook {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program");
 		AddressBook addressBook = new AddressBook();
-		
+
 		MultipleAddressBook multiAddressBook = new MultipleAddressBook();
-		boolean flag = true;	
+		boolean flag = true;
 		while (flag) {
-			System.out.println("Enter \n 1. Add new AddressBook\n 2. Add contact in AddressBook\n " +
-					"3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n " +
-					"6. Print the AddressBook\n 7. Print the contacts in AddressBook\n 0. Exit Applcation");
+			System.out.println("Enter \n 1. Add new AddressBook\n 2. Add contact in AddressBook\n "
+					+ "3. Edit the contact in AddressBook\n 4. Delete the contact in AddressBook\n 5. Delete the AddressBook\n "
+					+ "6. Print the AddressBook\n 7. Print the contacts in AddressBook\n 0. Exit Applcation");
 			Scanner scanner = new Scanner(System.in);
 			int choice = scanner.nextInt();
 			switch (choice) {

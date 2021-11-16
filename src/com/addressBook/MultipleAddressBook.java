@@ -1,11 +1,15 @@
 package com.addressBook;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class MultipleAddressBook {
-	Map<String, Contact> contactService = new HashMap<>();
+	PersonInformation person = new PersonInformation();
+	List<PersonInformation> contactList = new ArrayList<>();
+	HashMap<String, Contact> contactService = new HashMap<>();
 
 	public void addAddressBook() {
 		System.out.println("Enter Name of new Address Book: ");
@@ -85,10 +89,9 @@ public class MultipleAddressBook {
 		int countContact = 1;
 		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
 			System.out.println("The contacts in the Book of < " + entry.getKey() + " > are!...");
-			System.out.println(countContact + " " + entry.getValue().contactDetailsList);
+			System.out.println(countContact + " " + entry.getValue().contactList);
 			countContact++;
 		}
 		System.out.println(" ");
 	}
-
 }
