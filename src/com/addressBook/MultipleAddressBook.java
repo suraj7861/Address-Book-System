@@ -15,6 +15,7 @@ public class MultipleAddressBook {
 
 	static final String FILE_PATH = "AddressBookDetails.txt";
 	static final String CSV_FILE_PATH = "AddressBook.csv";
+	static final String JSON_FILE_PATH = "AddressBook2.json";
 	PersonInformation person = new PersonInformation();
 	List<PersonInformation> contactList = new ArrayList<>();
 	HashMap<String, Contact> contactService = new HashMap<>();
@@ -366,6 +367,51 @@ public class MultipleAddressBook {
 		System.out.println(sc.next() + " ");
 		sc.close();
 	}
+	// write in the JSON file
+	private void writeJSONFile() throws IOException {
+		FileWriter fw = new FileWriter(JSON_FILE_PATH);
+		fw.write("Address Book Name,FirstName,LastName,Address,State,Zip,Phone Number,E-mail\n");
+		for (Map.Entry<String, Contact> entry : contactService.entrySet()) {
+			List<PersonInformation> contList = entry.getValue().contactList;
+			for (int i = 0; i < contList.size(); i++) {
+				fw.write(entry.getKey() + "," + contList.get(i).getFirstName() + "," + contList.get(i).getLastName()
+						+ "," + contList.get(i).getAddress() + "," + contList.get(i).getCity() + ","
+						+ contList.get(i).getState() + "," + contList.get(i).getZip() + ","
+						+ contList.get(i).getPhoneNumber() + "," + contList.get(i).getEmail() + "\n");
+			}
+		}
+		fw.close();
+	}
+	// read csv file
+	private void readJSONFile() throws IOException {
+		FileReader fr = new FileReader(JSON_FILE_PATH);
+		Scanner sc = new Scanner(fr);
+		sc.useDelimiter("\\Z");
+		System.out.println(sc.next() + " ");
+		sc.close();
+	}
 
+	public void readAndWriteJSONFile() throws IOException {
+		while (true) {
+			System.out.println("Enter\n 1. Read the Json File\n 2. Write In the Json File\n 0. for previous menu");
+			int choice = scanner.nextInt();
+			scanner.nextLine();
+			switch (choice) {
+			case 1:
+				readJSONFile();
+				break;
+			case 2:
+				writeJSONFile();
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("please enter correct choice");
+			}
+		}
+		
+		
+	}
+	
 
 }

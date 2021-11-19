@@ -51,7 +51,10 @@ public class AddressBook {
 				multiAddressBook.readAndWriteTextFile();
 				break;
 			case 12:
-				multiAddressBook.readAndWriteCSVFile();;
+				multiAddressBook.readAndWriteCSVFile();
+				break;
+			case 13:
+				multiAddressBook.readAndWriteJSONFile();
 				break;
 			case 0:
 				System.out.println("Exit Application");
