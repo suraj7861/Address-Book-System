@@ -1,3 +1,3 @@
 The contacts in the Book of < ''employee'' > are : 
-	{ First Name :suraj, Last Name :khomane, Address : sk@gmail, City : pune, State : maharastra, Zip : null, Phone Number : 98888888, Email ID : jskhwikwm }
+	{ First Name :suraj, Last Name :khomane, Address : abc, City : pune, State : maharastra, Zip : null, Phone Number : 98888888, Email ID : sk@gmail.com }
 	{ First Name :mahesh, Last Name :jagtap, Address : pune, City : baramati, State : up, Zip : null, Phone Number : 977777777, Email ID : mj@jskjsk }
